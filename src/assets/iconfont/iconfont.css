@@ -1,0 +1,29 @@
+
+@font-face {font-family: "el-icon-my";
+  src: url('iconfont.eot?t=1482566171978'); /* IE9*/
+  src: url('iconfont.eot?t=1482566171978#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1482566171978') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1482566171978') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1482566171978#el-icon-my') format('svg'); /* iOS 4.1- */
+}
+
+.el-icon-my {
+  font-family:"el-icon-my" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-my-user:before { content: "\e624"; }
+
+.el-icon-my-home:before { content: "\e60a"; }
+
+.el-icon-my-toggle:before { content: "\e631"; }
+
+.el-icon-my-staff:before { content: "\e77b"; }
+
+.el-icon-my-rooms:before { content: "\e698"; }
+
+.el-icon-my-reqs:before { content: "\e66e"; }
+

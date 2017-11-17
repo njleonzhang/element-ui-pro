@@ -1,0 +1,15 @@
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.manage-page {
+  padding: 20px;
+
+  .mgmt-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: $blue;
+  }
+}
