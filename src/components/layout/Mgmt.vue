@@ -95,7 +95,7 @@
 </template>
 
 <script>
-  import SideBar from '@/components/SideBar'
+  import SideBar from '@/components/layout/SideBar'
   import HttpService from '@/services/Http'
   import types from '@/store/types'
 
