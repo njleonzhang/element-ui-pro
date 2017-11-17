@@ -3,7 +3,6 @@
     height: 36px;
     margin-bottom: 22px;
     font-size: 14px;
-    color: $label-color;
 
     span {
       display: inline-block;

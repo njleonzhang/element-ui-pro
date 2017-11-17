@@ -15,14 +15,14 @@
     background-color: white;
     height: $header-height;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    padding-left: 24px;
+    color: $primary-font;
 
     i {
       display: inline-block;
       line-height: $header-height;
-      color: rgba(0, 0, 0, 0.65);
       font-size: 20px;
       vertical-align: middle;
-      margin-left: 24px;
 
       &.hover {
         font-size: 32px;
@@ -37,14 +37,16 @@
     }
 
     .right {
+      height: 100%;
       float: right;
       margin-right: 20px;
-      .el-dropdown-link {
-        color: #fff;
-      }
 
       .user-info {
         margin-right: 10px;
+      }
+
+      .el-icon-mgmt-user {
+        font-size: 30px;
       }
     }
   }
@@ -84,7 +86,7 @@
           el-dropdown(@command='dropDownItemClick')
             span.el-dropdown-link
               span.user-info {{userInfo}}
-              i.el-icon-my.el-icon-my-user(v-hover='')
+              i.el-icon-mgmt.el-icon-mgmt-user(v-hover='')
             el-dropdown-menu(slot='dropdown')
               el-dropdown-item(command='gotoMy') 个人信息
               el-dropdown-item(command='logout') 退出登录

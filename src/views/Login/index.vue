@@ -6,7 +6,6 @@
     min-height: 800px;
 
     p {
-      color: $label-color;
       text-align: center;
     }
 

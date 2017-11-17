@@ -2,6 +2,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $primary-font;
 }
 
 .manage-page {
@@ -10,6 +11,5 @@ body {
   .mgmt-title {
     margin-bottom: 20px;
     font-size: 20px;
-    color: $blue;
   }
 }

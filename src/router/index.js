@@ -63,39 +63,42 @@ let router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   let app = router.app
+router.beforeEach((to, from, next) => {
+  let app = router.app
 
-//   // set active item in side bar
-//   store.dispatch(types.sideBar.ACTIVE, to.fullPath)
+  // set active item in side bar
+  store.dispatch(types.sideBar.ACTIVE, to.fullPath)
 
-//   if (app.init) {
-//     next()
-//   } else {
-//     // 第一次启动的时候执行
-//     let retryCommonPost = makeRetry(HttpService.SCCommonPost)
-//     retryCommonPost('staff/check').then(data => {
-//       app.init = true
+  if (app.init) {
+    next()
+  } else {
+    // 第一次启动的时候执行
+    store.dispatch(types.userInfo.SAVE, {
+      name: 'Leon',
+      block_name: 'Element社区',
+      staff_id: '1234'
+    })
+    next()
 
-//       if (data && data.block_id) {
-//         CachedBlockId.set(data.block_id)
-//         store.dispatch(types.userInfo.SAVE, data)
-//       } else {
-//         router.replace('/login')
-//       }
-//       next()
-//     }, _ => {
-//       app.$notify.error({
-//         title: '服务器错误',
-//         message: '无法连接服务器，请稍后重试',
-//         duration: 0,
-//         customClass: 'server-error'
-//       })
-//     })
-//   }
-// })
+    // let retryCommonPost = makeRetry(HttpService.SCCommonPost)
+    // retryCommonPost('staff/check').then(data => {
+    //   app.init = true
 
-// 路由实例绑定到window上，便与http模块里调用
-// window.router = router
+    //   if (data && data.block_id) {
+    //     CachedBlockId.set(data.block_id)
+    //   } else {
+    //     router.replace('/login')
+    //   }
+    //   next()
+    // }, _ => {
+    //   app.$notify.error({
+    //     title: '服务器错误',
+    //     message: '无法连接服务器，请稍后重试',
+    //     duration: 0,
+    //     customClass: 'server-error'
+    //   })
+    // })
+  }
+})
 
 export default router

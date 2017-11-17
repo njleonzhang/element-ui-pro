@@ -20,7 +20,7 @@ export default [
   },
   {
     name: '用户管理',
-    icon: 'el-icon-mgmt el-icon-mgmt-user',
+    icon: 'el-icon-mgmt el-icon-mgmt-users',
     children: [
       {
         name: '用户列表',
