@@ -1,7 +1,7 @@
 # element-ui-pro
 Boilerplate for element-ui 2.0
 
-高仿ant design pro
+element ui高仿ant design pro
 
 目前只有个架子
 
