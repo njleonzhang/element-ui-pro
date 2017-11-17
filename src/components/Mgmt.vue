@@ -20,8 +20,9 @@
       display: inline-block;
       line-height: $header-height;
       color: rgba(0, 0, 0, 0.65);
-      font-size: 30px;
+      font-size: 20px;
       vertical-align: middle;
+      margin-left: 24px;
 
       &.hover {
         font-size: 32px;
@@ -76,10 +77,9 @@
     side-bar
     .right-side(:class="{'slide-close': sideClose}")
       .header
-        img.title-logo(src='@/assets/images/titleLogo.png' @click='gotoHome')
-        i.el-icon-my.el-icon-my-toggle.toggle(
-          v-hover=''
-          @click="toggleSlide")
+        i.el-icon-mgmt(
+          :class='sideClose ? "el-icon-mgmt-menu-unfold" : "el-icon-mgmt-menu-fold"'
+          @click='toggleSlide')
         .right
           el-dropdown(@command='dropDownItemClick')
             span.el-dropdown-link
