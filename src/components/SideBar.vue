@@ -129,7 +129,7 @@
             default-active={this.activeIndex}>
 
             <div class='logo'>
-              <img src='src/assets/images/logo.svg' />
+              <img src={require('@/assets/images/logo.svg')} />
               <span>Element UI Pro</span>
             </div>
 
