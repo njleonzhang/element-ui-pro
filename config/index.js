@@ -17,7 +17,7 @@ module.exports = {
     port: 8080, // can be overwritten by process.env.HOST, if port is in use, a free one will be determined
     proxyTable: {
       '/api': {
-        target: '------真实服务器地址-----',
+        target: 'http://139.196.186.245:8080/mockjsdata/1/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -42,7 +42,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help

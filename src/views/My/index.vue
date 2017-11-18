@@ -50,7 +50,7 @@
 </template>
 
 <script>
-  import HttpService from '@/services/Http'
+  // import HttpService from '@/services/Http'
   import RevisePd from './Dialogs/RevisePd'
   import InfoBar from '@/components/InfoBar'
   import types from '@/store/types'
@@ -77,13 +77,13 @@
       }
     },
 
-    beforeRouteEnter(to, from, next) {
-      HttpService.SCPrefixGet('staff/detail').then(data => {
-        next(vm => {
-          vm.detail = data
-        })
-      })
-    },
+    // beforeRouteEnter(to, from, next) {
+      // HttpService.SCPrefixGet('staff/detail').then(data => {
+      //   next(vm => {
+      //     vm.detail = data
+      //   })
+      // })
+    // },
 
     methods: {
       onSubmit() {
@@ -108,15 +108,15 @@
               return
             }
 
-            HttpService.SCPrefixPost('staff/update', data).then(_ => {
-              this.$message({
-                type: 'success',
-                message: '更新成功'
-              })
-              this.$store.dispatch(types.userInfo.UPDATE, {
-                name: _.name
-              })
-            })
+            // HttpService.SCPrefixPost('staff/update', data).then(_ => {
+            //   this.$message({
+            //     type: 'success',
+            //     message: '更新成功'
+            //   })
+            //   this.$store.dispatch(types.userInfo.UPDATE, {
+            //     name: _.name
+            //   })
+            // })
           } else {
             return false
           }

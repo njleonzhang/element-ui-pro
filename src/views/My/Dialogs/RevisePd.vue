@@ -11,7 +11,6 @@
 </template>
 <script>
   import FormDialogMixin from '@/mixins/FormDialog'
-  import HttpService from '@/services/Http'
 
   export default {
     mixins: [
@@ -51,13 +50,13 @@
             return
           }
 
-          HttpService.SCPrefixPost('staff/reset-password', this.innerData).then(_ => {
-            this.$message({
-              type: 'success',
-              message: '修改成功'
-            })
-            this.modelShow = false
-          })
+          // HttpService.SCPrefixPost('staff/reset-password', this.innerData).then(_ => {
+          //   this.$message({
+          //     type: 'success',
+          //     message: '修改成功'
+          //   })
+          //   this.modelShow = false
+          // })
         })
       }
     }

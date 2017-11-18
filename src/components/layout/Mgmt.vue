@@ -96,7 +96,7 @@
 
 <script>
   import SideBar from '@/components/layout/SideBar'
-  import HttpService from '@/services/Http'
+  // import HttpService from '@/services/Http'
   import types from '@/store/types'
 
   export default {
@@ -128,14 +128,14 @@
             break
 
           case 'logout':
-            HttpService.SCCommonGet('staff/logout').then(_ => {
-              this.$message({
-                type: 'success',
-                message: '登出成功'
-              })
-              this.$store.dispatch(types.userInfo.DELETE)
-              this.$router.push('/login')
-            })
+            // HttpService.SCCommonGet('staff/logout').then(_ => {
+            //   this.$message({
+            //     type: 'success',
+            //     message: '登出成功'
+            //   })
+            //   this.$store.dispatch(types.userInfo.DELETE)
+            //   this.$router.push('/login')
+            // })
             break
 
           default:

@@ -75,10 +75,10 @@
 // eslint-disable-next-line
 import particles from 'exports-loader?particlesJS=window.particlesJS,window.pJSDom!particles.js'
 import config from './particlesConfig'
-import HttpService from '@/services/Http'
 import {CachedBlockId} from '@/services/CachedStorages'
 import {CachedCsrf} from '@/services/CachedCookies'
 import types from '@/store/types'
+import api from '@/api'
 
 export default {
   data() {
@@ -119,18 +119,20 @@ export default {
 
   methods: {
     login() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate(async valid => {
         if (valid) {
-          HttpService.SCCommonPost('staff/login', this.loginData).then(data => {
+          try {
+            let data = await api.Auth.login(this.loginData)
             if (data.block_id) {
               CachedBlockId.set(data.block_id)
               this.$store.dispatch(types.userInfo.SAVE, data)
               CachedCsrf.renew()
             }
             this.$router.push('/mgmt/home')
-          }, _ => {
+          } catch (e) {
+            console.log(e)
             this.refreshCaptcha()
-          })
+          }
         }
       })
     },
@@ -140,10 +142,9 @@ export default {
       this.captchaUrl = data.captcha_img_url
     },
 
-    refreshCaptcha() {
-      HttpService.SCCommonGet('common/refresh-captcha').then(data => {
-        this.initCaptchaData(data)
-      })
+    async refreshCaptcha() {
+      let data = await api.Auth.refreshCaptcha()
+      this.initCaptchaData(data)
     }
   }
 }
