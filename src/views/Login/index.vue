@@ -106,11 +106,11 @@ export default {
   },
 
   // beforeRouteEnter(to, from, next) {
-    // HttpService.SCCommonGet('common/refresh-captcha').then(data => {
-    //   next(vm => {
-    //     vm.initCaptchaData(data)
-    //   })
-    // })
+  //   HttpService.SCCommonGet('common/refresh-captcha').then(data => {
+  //     next(vm => {
+  //       vm.initCaptchaData(data)
+  //     })
+  //   })
   // },
 
   mounted() {

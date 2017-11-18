@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "sourceMaps": true,
+      "url": "http://10.32.0.100:8080/",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${workspaceRoot}/src/*"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import {makeRetry} from '@/services/Tools'
+import api from '@/api'
 import {CachedBlockId} from '@/services/CachedStorages'
 import types from '@/store/types'
 import store from '@/store'
@@ -81,7 +82,7 @@ router.beforeEach((to, from, next) => {
     next()
 
     // let retryCommonPost = makeRetry(HttpService.SCCommonPost)
-    // retryCommonPost('staff/check').then(data => {
+    // api.staff('staff/check').then(data => {
     //   app.init = true
 
     //   if (data && data.block_id) {
