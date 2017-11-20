@@ -64,10 +64,6 @@ async function httpBase(method, url, data, {
           code = 'URL_NOT_FOUND'
           msg = 'URL找不到'
           break
-        case 0:
-          code = 'TIMEOUT'
-          msg = '连接服务器超时'
-          break
       }
     } else {
       if (err.code === 'ECONNABORTED') {
