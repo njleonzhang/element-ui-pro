@@ -65,6 +65,10 @@
 
     &:not(.el-menu--collapse) {
       width: 256px;
+
+      &.horizontal-collapse-transition {
+        width: 80px !important;
+      }
     }
   }
 
