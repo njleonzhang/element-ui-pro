@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import { CachedCsrf } from '@/services/CachedCookies'
 import router from '@/router'
+import { Message } from 'element-ui'
 
 async function httpBase(method, url, data, {
   showErrorToast = true,
@@ -35,17 +36,22 @@ async function httpBase(method, url, data, {
 
       default:
         if (showErrorToast) {
-          //  toast here
+          Message.error(msg)
         }
         throw {
           code,
-          msg
+          msg,
+          _SL_TAG_ErrorFromServer: true
         }
         break
     }
   } catch (err) {
-    let msg = 'UNKNOWN_ERROR',
-      code = '未知错误'
+    if (err._SL_TAG_ErrorFromServer) {
+      throw error
+    }
+
+    let code = 'UNKNOWN_ERROR',
+      msg = '未知错误'
 
     if (err.response && err.response.status !== undefined) {
       const status = parseInt(err.response.status / 100, 10)
@@ -73,10 +79,10 @@ async function httpBase(method, url, data, {
       }
     }
 
-    console.error({code, msg})
+    console.error({ code, msg })
 
     if (showErrorToast) {
-      //  toast here
+      Message.error(msg)
     }
 
     throw {
@@ -86,10 +92,10 @@ async function httpBase(method, url, data, {
   }
 }
 
-export const get = async function(url, options = {}) {
+export const get = async function (url, options = {}) {
   return await httpBase('get', url, {}, options)
 }
 
-export const post = async function(url, data, options = {}) {
+export const post = async function (url, data, options = {}) {
   return await httpBase('post', url, data, options)
 }
