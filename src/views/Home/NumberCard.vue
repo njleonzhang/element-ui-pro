@@ -13,7 +13,7 @@
         default: ''
       },
       number: {
-        type: String,
+        type: [String, Number],
         default: ''
       }
     }
@@ -21,8 +21,6 @@
 </script>
 
 <style lang='scss'>
-  .number-card-group {
-  }
   .number-card {
     height: 120px;
     box-sizing: border-box;
