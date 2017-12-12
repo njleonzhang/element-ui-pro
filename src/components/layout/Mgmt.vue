@@ -70,6 +70,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+    padding: 24px;
+    overflow-y: scroll;
   }
 
 </style>
@@ -86,7 +88,7 @@
           el-dropdown(@command='dropDownItemClick')
             span.el-dropdown-link
               span.user-info {{userInfo}}
-              i.el-icon-mgmt.el-icon-mgmt-user(v-hover='')
+              i.el-icon-mgmt.el-icon-mgmt-user
             el-dropdown-menu(slot='dropdown')
               el-dropdown-item(command='gotoMy') 个人信息
               el-dropdown-item(command='logout') 退出登录
@@ -96,7 +98,6 @@
 
 <script>
   import SideBar from '@/components/layout/SideBar'
-  // import HttpService from '@/services/Http'
   import types from '@/store/types'
 
   export default {
@@ -109,11 +110,6 @@
       },
       userInfo() {
         return this.$store.state.userInfo.content
-      }
-    },
-    data() {
-      return {
-        isHover: false
       }
     },
     methods: {
@@ -150,23 +146,6 @@
 
     created() {
       this.$store.dispatch(types.userInfo.UPDATE)
-    },
-
-    directives: {
-      hover: {
-        bind(el) {
-          let hoverClass = ' hover'
-
-          el.addEventListener('mouseover', _ => {
-            el.className += hoverClass
-          })
-
-          el.addEventListener('mouseout', _ => {
-            let name = el.className
-            el.className = name.replace(hoverClass, '')
-          })
-        }
-      }
     }
   }
 </script>

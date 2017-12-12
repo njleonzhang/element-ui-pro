@@ -1,3 +1,5 @@
+@import "./common/_reset";
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -11,5 +13,15 @@ body {
   .mgmt-title {
     margin-bottom: 20px;
     font-size: 20px;
+  }
+}
+
+.page {
+  height: 100%;
+}
+
+.el-table {
+  .action-list button {
+    padding: 0;
   }
 }
