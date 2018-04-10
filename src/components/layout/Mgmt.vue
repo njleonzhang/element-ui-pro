@@ -99,10 +99,11 @@
 <script>
   import SideBar from '@/components/layout/SideBar'
   import types from '@/store/types'
+  import { Auth } from '@/api'
 
   export default {
     components: {
-      SideBar,
+      SideBar
     },
     computed: {
       sideClose() {
@@ -120,18 +121,18 @@
       dropDownItemClick(command) {
         switch (command) {
           case 'gotoMy':
-            this.$router.push('/mgmt/my')
+            // this.$router.push('/mgmt/my')
             break
 
           case 'logout':
-            // HttpService.SCCommonGet('staff/logout').then(_ => {
-            //   this.$message({
-            //     type: 'success',
-            //     message: '登出成功'
-            //   })
-            //   this.$store.dispatch(types.userInfo.DELETE)
-            //   this.$router.push('/login')
-            // })
+            Auth.logout().then(() => {
+              this.$message({
+                type: 'success',
+                message: '登出成功'
+              })
+              this.$store.dispatch(types.userInfo.DELETE)
+              this.$router.push('/login')
+            })
             break
 
           default:

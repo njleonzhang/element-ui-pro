@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import {makeRetry} from '@/services/Tools'
-import api from '@/api'
-import {CachedBlockId} from '@/services/CachedStorages'
+// import api from '@/api'
+// import {CachedBlockId} from '@/services/CachedStorages'
 import types from '@/store/types'
 import store from '@/store'
 
@@ -14,7 +14,6 @@ import Buildings from '@/views/Buildings'
 import Staff from '@/views/Staff'
 import My from '@/views/My'
 import NotFound from '@/components/NotFound'
-
 
 Vue.use(Router)
 

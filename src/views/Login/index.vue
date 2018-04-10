@@ -76,9 +76,9 @@
 import particles from 'exports-loader?particlesJS=window.particlesJS,window.pJSDom!particles.js'
 import config from './particlesConfig'
 import {CachedBlockId} from '@/services/CachedStorages'
-import {CachedCsrf} from '@/services/CachedCookies'
-import types from '@/store/types'
-import api from '@/api'
+// import { CachedCsrf } from '@/services/CachedCookies'
+// import types from '@/store/types'
+import { Auth } from '@/api'
 
 export default {
   data() {
@@ -122,11 +122,11 @@ export default {
       this.$refs.form.validate(async valid => {
         if (valid) {
           try {
-            let data = await api.Auth.login(this.loginData)
+            let data = await Auth.login(this.loginData)
             if (data.block_id) {
               CachedBlockId.set(data.block_id)
-              this.$store.dispatch(types.userInfo.SAVE, data)
-              CachedCsrf.renew()
+              // this.$store.dispatch(types.userInfo.SAVE, data)
+              // CachedCsrf.renew()
             }
             this.$router.push('/mgmt/home')
           } catch (e) {
@@ -143,7 +143,7 @@ export default {
     },
 
     async refreshCaptcha() {
-      let data = await api.Auth.refreshCaptcha()
+      let data = await Auth.refreshCaptcha()
       this.initCaptchaData(data)
     }
   }

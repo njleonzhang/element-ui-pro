@@ -7,7 +7,7 @@ export default (title, seriesData, xAxisData, yAxisData) => {
         fontWeight: 500
       }
     },
-    tooltip : {
+    tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'line',

@@ -21,7 +21,9 @@
     "vue-progressbar": "^0.7.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-router-sync": "^5.0.0"
+    "vuex-router-sync": "^5.0.0",
+    "web-cached-persistence": "^1.0.5",
+    "zy-http-base": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -52,7 +54,9 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-inline-plugin": "^0.0.2",
     "html-webpack-plugin": "^2.30.1",
+    "lodash-webpack-plugin": "^0.11.4",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.6.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",

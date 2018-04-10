@@ -12,10 +12,6 @@
   .manage-page
     .mgmt-title 个人信息
 
-    .dialogs
-      revise-pd(
-        v-model='revisePdDialogShow')
-
     el-row.my
       el-col(:span='12', :offset='6')
         info-bar(label='工号', :val='detail.employee_id' label-width="80px")
@@ -51,15 +47,13 @@
 
 <script>
   // import HttpService from '@/services/Http'
-  import RevisePd from './Dialogs/RevisePd'
   import InfoBar from '@/components/InfoBar'
-  import types from '@/store/types'
+  // import types from '@/store/types'
   import {isCellphone, isIdNumber} from '@/services/Validate'
 
   export default {
     components: {
-      InfoBar,
-      RevisePd
+      InfoBar
     },
 
     data() {
@@ -105,7 +99,7 @@
             }
             if (errMsg) {
               this.$message(errMsg)
-              return
+              // return
             }
 
             // HttpService.SCPrefixPost('staff/update', data).then(_ => {

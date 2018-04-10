@@ -48,11 +48,11 @@
   const complaintOptions = getLineOption('每月投诉量', seriesData, xAxisData)
 
   const seriesData2 = [
-                {value: '10', name:'直接访问'},
-                {value: '30', name:'邮件营销'},
-                {value: '60', name:'联盟广告'}
-            ]
-  const legendData = ['直接访问','邮件营销','联盟广告'];
+                {value: '10', name: '直接访问'},
+                {value: '30', name: '邮件营销'},
+                {value: '60', name: '联盟广告'}
+  ]
+  const legendData = ['直接访问', '邮件营销', '联盟广告']
   const pieOptions = getPieOption('维修类型占比', seriesData2, legendData)
 
   export default {

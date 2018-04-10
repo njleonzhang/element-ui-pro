@@ -44,6 +44,9 @@ export default (
             title={ title }
             loading={ this.loading }/>
         )
+      },
+      components: {
+        HOC
       }
     }
   }

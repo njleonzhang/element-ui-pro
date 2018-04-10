@@ -8,11 +8,12 @@
 
   .logo {
     height: $header-height;
-    padding-left: 22px;
+    padding-left: 24px;
+    padding-top: 13px;
     position: relative;
     img {
-      width: 32px;
-      height: 32px;
+      width: 137px;
+      height: 37px;
       line-height: $header-height;
       display: inline-block;
       margin-right: 12px;
@@ -134,7 +135,6 @@
 
             <div class='logo'>
               <img src={require('@/assets/images/logo.svg')} />
-              <span>Element UI Pro</span>
             </div>
 
             {

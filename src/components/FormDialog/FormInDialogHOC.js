@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import { cloneDeep } from 'lodash'
 
+/* commonDialogHoc -> FormInDialogHoc(this) -> Form
+  处理dialog中form的通用逻辑
+  1. dialog确定按钮被点击时, 触发form的validate对表格数据格式进行验证, 验证成功后向父组件发送form里的数据
+  2. dialog关闭的时候，并清空form里validate的值
+*/
+
 export default FormComponent => {
   return {
     name: 'FormInDialogHOC',
@@ -10,9 +16,6 @@ export default FormComponent => {
       dialogVisible: Boolean
     },
     computed: {
-      innerData() {
-        return this.adding ? {} : this.data
-      },
       formComponent() {
         return this.$refs.formComponent
       },
@@ -22,50 +25,44 @@ export default FormComponent => {
     },
     data() {
       return {
-        eventBus: new Vue()
+        eventBus: new Vue(),
+        innerData: {}
       }
     },
-    created() {
-      this.eventBus.$on('submit', () => {
-        this.$emit('confirm', this.formComponent.innerData)
+    mounted() {
+      // 接受来自父组件（commonDialogHoc）的summit事件
+      this.eventBus.$on('submit', async () => {
+        if (await this.isFormValid()) {
+          this.$emit('confirm',
+            (this.formComponent.getData && this.formComponent.getData()) || this.formComponent.data)
+        }
       })
     },
-    mounted() {
-      this.formComponent.$watch(
-        () => {
-          return this.formComponent.data
-        },
-        (val) => {
-          this.formComponent.innerData = cloneDeep(val)
-        },
-        {
-          immediate: true
-        }
-      )
-    },
     watch: {
-      dialogVisible(val) {
-        if (!val) {
-          if (this.form) {
-            this.$nextTick(() => {
-              this.formComponent.innerData = cloneDeep(this.formComponent.data)
+      dialogVisible: {
+        handler(val) {
+          this.$nextTick(() => {
+            if (val) {
+              // dialog打开的时候对form进行初始化，如果是新建逻辑，则用formComponent的defaultData字段去初始化form；
+              // 否则使用传入的data字段进行初始化(这里暴力地直接去修改了子组件的数据)
+              this.formComponent.data = cloneDeep(
+                this.adding
+                  ? this.formComponent.defaultData
+                  : this.data
+              )
+            } else {
+              // dialog关闭的时候把form的validate清除
               this.form.clearValidate()
-            })
-          } else {
-            console.error('form component must has a Form with ref form')
-          }
-        }
+            }
+          })
+        },
+        immediate: true
       }
     },
     methods: {
-      async submit() {
-        let validated = await this.validate()
-
-        if (validated) {
-          return this.form.innerData
-        } else {
-          return null
-        }
+      async isFormValid() {
+        let valid = await this.validate()
+        return valid
       },
 
       validate() {
@@ -83,7 +80,6 @@ export default FormComponent => {
     render() {
       return (
         <FormComponent ref='formComponent'
-          data={ this.innerData }
           adding={ this.adding }
           { ...{attrs: this.$attrs} }
           { ...{on: this.$listeners} }/>

@@ -7,12 +7,13 @@ export default (title, seriesData, legendData) => {
         fontWeight: 500
       }
     },
-    color: ['#3aa1ff', '#f2637b', '#fbd437', '#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
+    color: ['#3aa1ff', '#f2637b', '#fbd437', '#c23531', '#2f4554',
+      '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622',
+      '#bda29a', '#6e7074', '#546570', '#c4ccd3'],
     legend: {
       orient: 'vertical',
       top: '45%',
       left: '60%',
-      itemGap: 20,
       data: legendData,
       itemGap: 40,
       textStyle: {
@@ -32,16 +33,16 @@ export default (title, seriesData, legendData) => {
     //     fontSize: 20,
     //   }
     // },
-    tooltip : {
+    tooltip: {
       trigger: 'item',
-      axisPointer : {
-        type : 'shadow'
+      axisPointer: {
+        type: 'shadow'
       },
     },
     series: [{
       type: 'pie',
-      radius : [90, 110],
-      center : ['24%', '60%'],
+      radius: [90, 110],
+      center: ['24%', '60%'],
       avoidLabelOverlap: false,
       label: {
         normal: {
