@@ -22,8 +22,6 @@
 <script>
   export default {
     created() {
-      //  [App.vue specific] When App.vue is first loaded start the progress bar
-      this.$Progress.start()
       this.$router.beforeEach((to, from, next) => {
         this.$Progress.start()
         next()
@@ -34,7 +32,10 @@
       })
     },
     mounted() {
-      this.$Progress.finish()
+      this.$nextTick(() => {
+        const preloadItem = document.getElementById('preloader')
+        preloadItem && document.body.removeChild(preloadItem)
+      })
     }
   }
 </script>
