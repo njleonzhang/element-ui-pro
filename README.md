@@ -12,7 +12,4 @@
 
 # Online Demo
 https://njleonzhang.github.io/element-ui-pro/#/login
-
-用户名: admin
-密码: 666666
-验证码: 任意值
+https://njleonzhang.github.io/element-ui-pro/#/mgmt/home

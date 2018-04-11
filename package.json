@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "doc": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "axios": "^0.17.1",
