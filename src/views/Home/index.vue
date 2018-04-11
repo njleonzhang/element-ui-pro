@@ -16,19 +16,16 @@
           div(class="chart-wrapper")
             chart(
               :options='barOptions'
-              theme='macarons' ref='bar'
+              ref='bar'
               class="bar-chart")
       el-row(:gutter="40")
         el-col(:span="12")
           chart-card(:options="complaintOptions" ref='complaintCard')
         el-col(:span="12")
           chart-card(:options="pieOptions" ref='repairCard')
-
 </template>
 
 <script>
-  import Chart from 'vue-echarts/components/ECharts.vue'
-  import 'macarons'
   import debounce from 'throttle-debounce/debounce'
   import NumberCard from './NumberCard'
   import ChartCard from './ChartCard'
@@ -60,7 +57,6 @@
       NumberCard,
       ChartCard,
       MyProgressItem,
-      Chart
     },
 
     data() {

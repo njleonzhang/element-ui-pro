@@ -10,6 +10,14 @@ import '@/assets/styles/main.scss'
 import '@/assets/iconfont/iconfont.css'
 import DataTables from 'vue-data-tables'
 
+import ECharts from 'vue-echarts/components/ECharts'
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/chart/line'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/tooltip'
+
+Vue.component('chart', ECharts)
 sync(store, router)
 
 Vue.use(ElementUI)

@@ -1,19 +1,14 @@
 <template lang="pug">
   el-card
-    chart(:options='options', theme='macarons' ref='chart' class="chart-card")
+    chart(:options='options' ref='chart' class="chart-card")
 </template>
 
 <script>
-  import chart from 'vue-echarts/components/ECharts.vue'
-  import 'macarons'
   export default {
     props: {
       options: {
         type: Object
       },
-    },
-    components: {
-      chart
     },
     methods: {
       resize() {
