@@ -5,8 +5,11 @@
 <script>
   export default {
     beforeRouteEnter(to, from, next) {
-      window.location.href = '/static/404/404.html'
-      next(false)
+      next(vm => {
+        vm.$nextTick(() => {
+          window.location.replace('/static/404/404.html')
+        })
+      })
     }
   }
 </script>
