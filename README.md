@@ -11,5 +11,5 @@
 * vue-echarts
 
 # Online Demo
-https://njleonzhang.github.io/element-ui-pro/#/login
-https://njleonzhang.github.io/element-ui-pro/#/mgmt/home
+* https://njleonzhang.github.io/element-ui-pro/#/login
+* https://njleonzhang.github.io/element-ui-pro/#/mgmt/home
