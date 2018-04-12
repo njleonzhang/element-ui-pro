@@ -13,3 +13,4 @@ yarn-error.log*
 *.sln
 .vscode/*
 !.vscode/launch.json
+dist/
