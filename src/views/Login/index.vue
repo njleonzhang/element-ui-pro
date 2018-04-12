@@ -54,7 +54,7 @@
     #particles-container
     .login-form-wrapper
       .logo-wrapper
-        img.logo(src='src/assets/images/logo.svg')
+        img.logo(src='@/assets/images/logo.svg')
       p 后台管理系统
       el-form.login-form(:model='loginData', label-position='top', :rules='rules', ref='form')
         el-form-item(label='用户名', prop='username')
