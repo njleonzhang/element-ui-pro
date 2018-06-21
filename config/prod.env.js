@@ -1,5 +1,5 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  httpBaseUrl: '"/"'
+  httpBaseUrl: '"https://web.myiot360.com/"'
 }

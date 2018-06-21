@@ -7,6 +7,7 @@
 
     p {
       text-align: center;
+      color: white;
     }
 
     .login-form-wrapper {
@@ -25,12 +26,21 @@
     }
 
     .logo-wrapper {
-      text-align: center;
-    }
-
-    .logo {
-      width: 80px;
       margin-top: 30px;
+      text-align: center;
+      margin-bottom: 10px;
+
+      .logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 60px;
+      }
+
+      span {
+        display: inline-block;
+        line-height: 86px;
+        color: white;
+      }
     }
 
     .login-button{
@@ -55,36 +65,34 @@
     .login-form-wrapper
       .logo-wrapper
         img.logo(src='@/assets/images/logo.svg')
-      p 后台管理系统
+        span 中一业务管理与大数据平台
       el-form.login-form(:model='loginData', label-position='top', :rules='rules', ref='form')
-        el-form-item(label='用户名', prop='username')
-          el-input(v-model='loginData.username', @keyup.enter.native='login')
+        el-form-item(label='用户名', prop='account')
+          el-input(v-model='loginData.account', @keyup.enter.native='login')
         el-form-item(label='密码', prop='password')
           el-input(v-model='loginData.password', type='password', @keyup.enter.native='login')
-        el-form-item(label='验证码', prop='captcha_code')
-          el-row
-            el-col(:span=14)
-              el-input(v-model='loginData.captcha_code', @keyup.enter.native='login')
-            el-col(:span=8, :offset='2')
-              img.captcha(:src='captchaUrl' @click='refreshCaptcha')
+        //- el-form-item(label='验证码', prop='captcha_code')
+        //-   el-row
+        //-     el-col(:span=14)
+        //-       el-input(v-model='loginData.captcha_code', @keyup.enter.native='login')
+        //-     el-col(:span=8, :offset='2')
+        //-       img.captcha(:src='captchaUrl' @click='refreshCaptcha')
         el-form-item
-          el-button.login-button(type='success' @click='login') 登录
+          el-button.login-button(type='primary' @click='login') 登录
 </template>
 
 <script>
 // eslint-disable-next-line
 import particles from 'exports-loader?particlesJS=window.particlesJS,window.pJSDom!particles.js'
 import config from './particlesConfig'
-import {CachedBlockId} from '@/services/CachedStorages'
-// import { CachedCsrf } from '@/services/CachedCookies'
-// import types from '@/store/types'
+import types from '@/store/types'
 import { Auth } from '@/api'
 
 export default {
   data() {
     return {
       loginData: {
-        username: '',
+        account: '',
         password: '',
         captcha_code: ''
       },
@@ -92,15 +100,15 @@ export default {
       isLogin: true,
 
       rules: {
-        username: [{
-          required: true, message: '请输入用户名', trigger: 'change'
+        account: [{
+          required: true, message: '请输入用户名', trigger: 'blur'
         }],
         password: [{
-          required: true, message: '请输入密码', trigger: 'change'
+          required: true, message: '请输入密码', trigger: 'blur'
         }],
-        captcha_code: [{
-          required: true, message: '请输入验证码', trigger: 'change'
-        }]
+        // captcha_code: [{
+        //   required: true, message: '请输入验证码', trigger: 'change'
+        // }]
       }
     }
   },
@@ -123,15 +131,13 @@ export default {
         if (valid) {
           try {
             let data = await Auth.login(this.loginData)
-            if (data.block_id) {
-              CachedBlockId.set(data.block_id)
-              // this.$store.dispatch(types.userInfo.SAVE, data)
-              // CachedCsrf.renew()
-            }
-            this.$router.push('/mgmt/home')
+            this.$store.dispatch(types.userInfo.SAVE, data)
+            this.$router.push({
+              name: 'rooms'
+            })
           } catch (e) {
             console.log(e)
-            this.refreshCaptcha()
+            // this.refreshCaptcha()
           }
         }
       })

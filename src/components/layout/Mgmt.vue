@@ -87,8 +87,14 @@
         .right
           el-dropdown(@command='dropDownItemClick')
             span.el-dropdown-link
-              span.user-info {{userInfo}}
-              i.el-icon-mgmt.el-icon-mgmt-user
+              .user-info
+                .left-part
+                  i.el-icon-mgmt.el-icon-mgmt-user
+                .middle-part
+                  p {{ userInfo.name }}
+                  p {{ userInfo.role }}    
+                .right-part
+                  span.el-icon-arrow-down 
             el-dropdown-menu(slot='dropdown')
               el-dropdown-item(command='gotoMy') 个人信息
               el-dropdown-item(command='logout') 退出登录
@@ -121,7 +127,7 @@
       dropDownItemClick(command) {
         switch (command) {
           case 'gotoMy':
-            // this.$router.push('/mgmt/my')
+            this.$router.push('/mgmt/my')
             break
 
           case 'logout':
@@ -139,14 +145,6 @@
             // 不会到这里
         }
       },
-
-      gotoHome() {
-        this.$router.push('/mgmt/home')
-      }
-    },
-
-    created() {
-      this.$store.dispatch(types.userInfo.UPDATE)
     }
   }
 </script>

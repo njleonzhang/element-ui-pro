@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import {makeRetry} from '@/services/Tools'
-// import api from '@/api'
-// import {CachedBlockId} from '@/services/CachedStorages'
 import types from '@/store/types'
 import store from '@/store'
 
@@ -62,42 +59,39 @@ let router = new Router({
     }
   ]
 })
-
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   let app = router.app
 
   // set active item in side bar
   store.dispatch(types.sideBar.ACTIVE, to.fullPath)
 
-  if (app.init) {
+  if (app._inited) {
     next()
   } else {
     // 第一次启动的时候执行
-    store.dispatch(types.userInfo.SAVE, {
-      name: 'Leon',
-      block_name: 'Element社区',
-      staff_id: '1234'
-    })
-    next()
-
-    // let retryCommonPost = makeRetry(HttpService.SCCommonPost)
-    // api.staff('staff/check').then(data => {
-    //   app.init = true
-
-    //   if (data && data.block_id) {
-    //     CachedBlockId.set(data.block_id)
-    //   } else {
-    //     router.replace('/login')
-    //   }
-    //   next()
-    // }, _ => {
-    //   app.$notify.error({
-    //     title: '服务器错误',
-    //     message: '无法连接服务器，请稍后重试',
-    //     duration: 0,
-    //     customClass: 'server-error'
-    //   })
-    // })
+    app._inited = true
+    try {
+      // let data = await Auth.checkAuth()
+      // if (data && data.id) {
+      //   store.dispatch(types.userInfo.SAVE, data)
+      //   next()
+      // } else {
+      //   if (to.path === '/login') {
+      //     next()
+      //   } else {
+      //     next({
+      //       path: '/login',
+      //       query: { redirect: to.path }
+      //     })
+      //   }
+      // }
+      next()
+    } catch (err) {
+      Notification.error({
+        title: '错误',
+        message: err.payload.msg
+      })
+    }
   }
 })
 

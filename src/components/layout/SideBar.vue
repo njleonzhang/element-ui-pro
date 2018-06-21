@@ -8,16 +8,16 @@
 
   .logo {
     height: $header-height;
-    padding-left: 24px;
+    padding-left: 14px;
     padding-top: 13px;
     position: relative;
+
     img {
-      width: 137px;
-      height: 37px;
-      line-height: $header-height;
-      display: inline-block;
-      margin-right: 12px;
-      vertical-align: middle;
+      position: absolute;
+      margin: auto;
+      top: 10px;
+      bottom: 0;
+      width: 56px;
     }
 
     span {
@@ -26,17 +26,11 @@
       color: white;
       font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
       font-weight: 600;
+      margin-left: 60px;
     }
   }
 
   .el-menu--collapse .logo, .horizontal-collapse-transition .logo {
-    img {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-    }
-
     span {
       display: none !important;
     }
@@ -95,20 +89,18 @@
 </style>
 
 <script>
-  import navItems from '@/services/NavItems.js'
+  import { getNavItems } from '@/services/NavItems.js'
 
   export default {
-    data() {
-      return {
-        navItems
-      }
-    },
     computed: {
       sideClose() {
         return this.$store.state.sideBar.close
       },
       activeIndex() {
         return this.$store.state.sideBar.active
+      },
+      navItems() {
+        return getNavItems(this.$store.state.userInfo.content.is_super_admin)
       }
     },
 
@@ -135,23 +127,26 @@
 
             <div class='logo'>
               <img src={require('@/assets/images/logo.svg')} />
+              <span>中一管理后台</span>
             </div>
 
             {
               this.navItems.map((item, index) => {
                 return item.index
-                ? renderMenuItem(item)
-                : <el-submenu index={`${index}`}>
-                    <template slot="title">
-                      <i class={`${item.icon}`}></i>
-                      <span slot='title'>{item.name}</span>
-                    </template>
-                    {
-                      item.children
-                      ? item.children.map((childItem, itemPath) => renderMenuItem(childItem))
-                      : null
-                    }
-                  </el-submenu>
+                  ? renderMenuItem(item)
+                  : (
+                    <el-submenu index={`${index}`}>
+                      <template slot="title">
+                        <i class={`${item.icon}`}></i>
+                        <span slot='title'>{item.name}</span>
+                      </template>
+                      {
+                        item.children
+                          ? item.children.map((childItem, itemPath) => renderMenuItem(childItem))
+                          : null
+                      }
+                    </el-submenu>
+                  )
               })
             }
           </el-menu>

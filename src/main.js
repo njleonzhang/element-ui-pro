@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import VueProgressBar from 'vue-progressbar'
 import '@/assets/styles/main.scss'
 import '@/assets/iconfont/iconfont.css'
-import DataTables from 'vue-data-tables'
+import { DataTables, DataTablesServer } from 'vue-data-tables'
 
 import ECharts from 'vue-echarts/components/ECharts'
 import 'echarts/lib/chart/bar'
@@ -18,13 +18,16 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/tooltip'
 
 Vue.component('chart', ECharts)
-sync(store, router)
 
 Vue.use(ElementUI)
+Vue.use(DataTables)
+Vue.use(DataTablesServer)
+
 Vue.use(VueProgressBar, {
   color: '#13ce66'
 })
-Vue.use(DataTables)
+
+sync(store, router)
 
 /* eslint-disable no-new */
 new Vue({

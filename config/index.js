@@ -1,5 +1,5 @@
 'use strict'
-// Template version: 1.2.3
+// Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
@@ -7,17 +7,20 @@ const ip = require('ip')
 
 module.exports = {
   dev: {
+
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    // proxyTable: {},
 
     // Various Dev Server settings
     host: `${ip.address()}`, // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.HOST, if port is in use, a free one will be determined
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     proxyTable: {
       '/api': {
-        target: 'http://rap2api.taobao.org/app/mock/9927/',
+        target: 'http://192.168.11.5:7159/app/mock/18',
+        // target: 'http://192.168.11.5:8888',
+        // target: 'http://192.168.11.176:8000',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -42,6 +45,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
+    // devtool: 'cheap-eval-source-map',
     devtool: 'source-map',
 
     // If you have problems debugging vue-files in devtools,
@@ -49,12 +53,7 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    // CSS Sourcemaps off by default because relative paths are "buggy"
-    // with this option, according to the CSS-Loader README
-    // (https://github.com/webpack/css-loader#sourcemaps)
-    // In our experience, they generally work as expected,
-    // just be aware of this issue when enabling this option.
-    cssSourceMap: false,
+    cssSourceMap: true
   },
 
   build: {
@@ -64,7 +63,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/element-ui-pro/',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps
