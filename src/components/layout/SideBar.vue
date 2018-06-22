@@ -142,7 +142,7 @@
                       </template>
                       {
                         item.children
-                          ? item.children.map((childItem, itemPath) => renderMenuItem(childItem))
+                          ? item.children.map((childItem) => renderMenuItem(childItem))
                           : null
                       }
                     </el-submenu>
