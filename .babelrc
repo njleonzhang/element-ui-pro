@@ -5,7 +5,13 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-runtime", "transform-vue-jsx"],
+  "plugins": [
+    "transform-runtime",
+    "lodash",
+    "vue-jsx-sync",
+    "jsx-v-model",
+    "transform-vue-jsx"
+  ],
   "env": {
     "test": {
       "presets": ["env", "stage-2"]
