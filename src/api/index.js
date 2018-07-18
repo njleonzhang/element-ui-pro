@@ -1,7 +1,7 @@
 import { get, post } from '@/services/Http'
 
 export const Auth = {
-  login: loginData => post('login/', loginData),
+  login: loginData => post('user/login/', loginData),
   refreshCaptcha: () => get('common/refresh-captcha'),
   logout: () => get('user/logout/')
 }

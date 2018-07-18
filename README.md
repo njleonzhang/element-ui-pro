@@ -15,5 +15,11 @@
 * vue-echarts
 
 # Online Demo
+Launch chrome with `--allow-running-insecure-content` parameter, otherwise all http request will be blocked by the browser.
+
+```
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --allow-running-insecure-content
+```
+
 * https://njleonzhang.github.io/element-ui-pro/#/login
 * https://njleonzhang.github.io/element-ui-pro/#/mgmt/home
