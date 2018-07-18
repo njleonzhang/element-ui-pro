@@ -40,6 +40,7 @@
         display: inline-block;
         line-height: 86px;
         color: white;
+        margin-left: 20px;
       }
     }
 
@@ -65,7 +66,7 @@
     .login-form-wrapper
       .logo-wrapper
         img.logo(src='@/assets/images/logo.svg')
-        span 中一业务管理与大数据平台
+        span Element UI Pro
       el-form.login-form(:model='loginData', label-position='top', :rules='rules', ref='form')
         el-form-item(label='用户名', prop='account')
           el-input(v-model='loginData.account', @keyup.enter.native='login')
@@ -133,7 +134,7 @@ export default {
             let data = await Auth.login(this.loginData)
             this.$store.dispatch(types.userInfo.SAVE, data)
             this.$router.push({
-              name: 'rooms'
+              name: 'home'
             })
           } catch (e) {
             console.log(e)

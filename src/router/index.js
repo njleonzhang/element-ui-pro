@@ -32,6 +32,7 @@ let router = new Router({
       component: Mgmt,
       children: [
         {
+          name: 'home',
           path: 'home',
           component: Home
         },
@@ -71,6 +72,7 @@ router.beforeEach(async (to, from, next) => {
     // 第一次启动的时候执行
     app._inited = true
     try {
+      // session 检测的代码逻辑，根据具体业务定制。
       // let data = await Auth.checkAuth()
       // if (data && data.id) {
       //   store.dispatch(types.userInfo.SAVE, data)

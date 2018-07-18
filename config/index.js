@@ -18,9 +18,7 @@ module.exports = {
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     proxyTable: {
       '/api': {
-        target: 'http://192.168.11.5:7159/app/mock/18',
-        // target: 'http://192.168.11.5:8888',
-        // target: 'http://192.168.11.176:8000',
+        target: 'http://rap2api.taobao.org/app/mock/22156',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

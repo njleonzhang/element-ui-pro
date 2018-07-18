@@ -26,7 +26,8 @@
       color: white;
       font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
       font-weight: 600;
-      margin-left: 60px;
+      margin-left: 70px;
+      line-height: 56px;
     }
   }
 
@@ -127,7 +128,7 @@
 
             <div class='logo'>
               <img src={require('@/assets/images/logo.svg')} />
-              <span>中一管理后台</span>
+              <span>Element-ui-pro</span>
             </div>
 
             {
