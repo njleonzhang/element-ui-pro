@@ -84,6 +84,7 @@
     "particles.js": "^2.0.0",
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
+    "postcss-load-config": "^2.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "pug": "^2.0.3",
